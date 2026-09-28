@@ -1,0 +1,24 @@
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Local data files
+*.csv
+*.xlsx
+*.xls
+
+# Environment files and credentials
+.env
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
