@@ -39,7 +39,7 @@ Key activities included:
 - Identifying field surveyors with high visit counts
 - Exploring different water-source types
 - Calculating the number of people served by different water sources
-- Using SQL ranking functions to prioritize water sources
+- Using SQL ranking functions to analyze water sources
 - Analyzing survey duration and queue times
 
 ### 2. Water Access Analysis
@@ -52,12 +52,23 @@ The analysis included:
 - Comparing water-source distribution across provinces
 - Analyzing water access at town level
 - Calculating the share of people served by different source types
-- Examining queue-time patterns
 - Creating an aggregated view for further water-access analysis
 
-### 3. Auditor Report Integration
+### 3. Queue-Time Analysis
 
-The third phase integrated information from an auditor report into the existing database.
+The third phase focused specifically on patterns in water collection queue times.
+
+The analysis included:
+
+- Calculating average queue times
+- Comparing queue times across different days
+- Analyzing queue times by hour
+- Examining combined day-and-hour queue patterns
+- Organizing queue-time results for further analysis
+
+### 4. Auditor Report Integration
+
+The fourth phase integrated information from an auditor report into the existing database.
 
 The analysis included:
 
@@ -66,20 +77,20 @@ The analysis included:
 - Creating a view to combine audit and operational information
 - Comparing audit results across provinces and towns
 - Examining audit results associated with individual employees
-- Identifying areas with lower audit scores for further investigation
+- Identifying lower audit scores for further investigation
 
-### 4. Infrastructure Prioritization
+### 5. Infrastructure Prioritization
 
-The final phase translated the analysis into structured infrastructure recommendations.
+The final phase used the available water-service information to organize potential infrastructure interventions.
 
 The analysis included potential interventions such as:
 
-- Recommending wells as alternatives for river-based water sources
+- Identifying rivers as potential candidates for alternative water sources
 - Prioritizing additional shared taps where queue times are high
-- Flagging broken in-home taps for infrastructure diagnosis
-- Considering different treatment approaches for contaminated wells
+- Flagging broken in-home taps for further attention
+- Identifying wells with contamination concerns
 - Creating a `Project_progress` table to organize potential interventions
-- Applying conditional logic to assign potential improvements based on source type and service conditions
+- Applying conditional logic based on source type and service conditions
 
 These recommendations are analytical outputs based on the project dataset. They would require additional technical, financial, and field validation before implementation.
 
@@ -146,11 +157,11 @@ Maji_Ndogo_Water_Analysis/
 +-- README.md
 ```
 
-The notebooks group the analysis into three broader stages, while the SQL directory separates the main database work into five focused scripts for easier review and reuse.
-
 ---
 
 ## Notebook Breakdown
+
+The notebooks group the analysis into three broader stages, while the SQL directory separates the main database work into five focused scripts for easier review and reuse.
 
 ### 01 - Water Crisis Analysis
 
