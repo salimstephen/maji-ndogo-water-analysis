@@ -6,19 +6,19 @@ This project analyzes water access, service conditions, survey data, and infrast
 
 The project was completed as a hands-on data analytics project using SQL, MySQL, and Jupyter Notebooks. The analysis covers data exploration and cleaning, water access analysis, queue-time analysis, auditor report integration, and infrastructure prioritization.
 
-The main objective was to work with relational data, apply practical SQL techniques, identify patterns in water access and service conditions, and organize the results into structured analytical outputs.
+The main objective was to work with relational data, apply practical SQL techniques, identify patterns in water access and service conditions, and organize the findings into structured analytical outputs that can support decision-making.
 
 ---
 
 ## Project Objectives
 
-The analysis focuses on questions such as:
+The project focuses on answering the following questions:
 
 - How is water access distributed across different locations and source types?
 - How many people are served by different water sources?
 - What patterns exist in water collection queue times?
-- How can auditor information be integrated with the existing database?
-- Which infrastructure conditions may require attention?
+- How can auditor information be integrated with the existing water services data?
+- Which water sources or infrastructure conditions may require attention?
 - How can the available data be used to organize potential intervention priorities?
 
 ---
@@ -87,26 +87,39 @@ These recommendations are analytical outputs based on the project dataset. They 
 
 ## SQL Techniques Used
 
-This project demonstrates practical use of several SQL techniques:
+The project applied practical SQL techniques across data exploration, cleaning, analysis, data integration, and prioritization.
 
-- `SELECT`
-- `WHERE`
-- `JOIN`
-- `GROUP BY`
-- Aggregate functions
-- `CASE` statements
-- Common Table Expressions (CTEs)
-- `CREATE VIEW`
+### Data Exploration and Cleaning
+- `SELECT`, `WHERE`, `ORDER BY`, and filtering
+- Data inspection using `DESCRIBE` and table exploration
+- Text cleaning and standardization
+- Conditional transformations using `CASE`
+- Date and time functions
+- Data quality checks
+
+### Relational Data Analysis
+- `INNER JOIN` and `LEFT JOIN`
+- Multi-table joins
+- `GROUP BY` and aggregate functions
 - Temporary tables
-- `UPDATE`
-- Window functions
+- Common Table Expressions (CTEs)
+- Creating analytical views with `CREATE VIEW`
+
+### Analytical SQL
 - `RANK()`
 - `DENSE_RANK()`
 - `ROW_NUMBER()`
-- Date and time functions
-- Data cleaning and standardization
+- Window functions
+- Aggregated comparisons
+- Day-of-week and hourly analysis
 - Conditional calculations
-- Data integration
+
+### Data Integration and Prioritization
+- Integrating auditor information with existing database tables
+- Combining operational, location, water-source, and quality data
+- Creating structured intervention logic using `CASE`
+- Updating analytical results based on identified conditions
+- Creating and validating the `Project_progress` table
 
 ---
 
@@ -120,6 +133,8 @@ Maji_Ndogo_Water_Analysis/
 |   +-- 02_auditor_report_integration.ipynb
 |   +-- 03_water_future_analysis.ipynb
 |
++-- outputs/
+|
 +-- sql/
 |   +-- 01_data_exploration.sql
 |   +-- 02_water_access_analysis.sql
@@ -127,10 +142,12 @@ Maji_Ndogo_Water_Analysis/
 |   +-- 04_auditor_report_integration.sql
 |   +-- 05_infrastructure_prioritization.sql
 |
-+-- outputs/
-|
 +-- .gitignore
 +-- README.md
+```
+
+The notebooks group the analysis into three broader stages, while the SQL directory separates the main database work into five focused scripts for easier review and reuse.
+
 ---
 
 ## Notebook Breakdown
@@ -139,229 +156,248 @@ Maji_Ndogo_Water_Analysis/
 
 **File:** `notebooks/01_water_crisis_analysis.ipynb`
 
-This notebook focuses on the initial exploration, cleaning, and analysis of the Maji Ndogo water services database.
+This notebook covers the initial exploration, cleaning, and analysis of the Maji Ndogo water-services database.
 
-Main areas covered:
-
-- Database structure exploration
-- Data dictionary inspection
-- Employee data cleaning
-- Email standardization
-- Phone number cleaning
-- Employee and surveyor analysis
-- Location analysis
-- Water-source analysis
-- People served by source type
-- SQL ranking functions
-- Survey duration analysis
-- Queue-time analysis
+Key areas include:
+- Exploring the database structure and data dictionary
+- Examining employees, locations, visits, and water sources
+- Cleaning and standardizing employee contact information
+- Analyzing employee and field-surveyor activity
+- Examining locations by town, province, and location type
+- Analyzing water-source types and the number of people served
+- Applying SQL ranking functions
+- Analyzing survey duration and queue times
 
 ### 02 - Auditor Report Integration
 
 **File:** `notebooks/02_auditor_report_integration.ipynb`
 
-This notebook integrates the auditor's report with the existing Maji Ndogo database.
+This notebook focuses on integrating auditor information with the existing Maji Ndogo water-services data.
 
-Main areas covered:
-
-- Database table exploration
-- Understanding relationships between tables
-- Auditor report integration
-- Combining audit information with employee and location data
-- Audit score analysis
-- Province and town comparisons
-- Employee-level audit analysis
+Key areas include:
+- Exploring the auditor report data
+- Examining relationships between audit and operational data
+- Connecting auditor information with employees, locations, visits, and water sources
+- Creating an analytical view combining audit and service information
+- Comparing audit results across provinces and towns
+- Examining audit results at employee level
+- Identifying lower audit scores for further investigation
 
 ### 03 - Water Future Analysis
 
 **File:** `notebooks/03_water_future_analysis.ipynb`
 
-This notebook focuses on analyzing water access conditions and organizing potential infrastructure improvements.
+This notebook focuses on water access, service conditions, and potential infrastructure interventions.
 
-Main areas covered:
-
-- Combining visits, locations, water sources, and pollution information
-- Provincial and town-level water access analysis
+Key areas include:
+- Combining visits, locations, water sources, and water-quality information
+- Analyzing water access across provinces and towns
 - Creating the `Project_progress` table
-- Identifying infrastructure conditions
-- River-source intervention logic
-- Shared-tap queue analysis
-- Broken in-home tap analysis
-- Well contamination analysis
-- Potential infrastructure improvements
+- Examining infrastructure conditions
+- Developing conditional logic for potential interventions
+- Identifying potential actions for river sources
+- Analyzing shared-tap queue conditions
+- Identifying broken in-home taps
+- Identifying wells with contamination concerns
+- Organizing potential infrastructure improvements based on the available data
+
+The notebooks provide the broader analytical workflow, while the SQL scripts separate the main database tasks into focused, reusable sections.
 
 ---
 
 ## SQL Script Breakdown
 
-The `sql` directory contains the main SQL analysis organized into separate scripts.
-
 ### 01 - Data Exploration
 
 **File:** `sql/01_data_exploration.sql`
 
-Contains SQL queries for:
+This script covers the initial exploration and cleaning of the Maji Ndogo database.
 
-- Database exploration
-- Employee data cleaning
-- Employee analysis
-- Location analysis
-- Field surveyor analysis
-- Water-source analysis
-- Ranking water sources
-- Survey period analysis
-- Queue-time analysis
+Key areas include:
+- Exploring database tables and structures
+- Inspecting employee and location data
+- Cleaning and standardizing employee contact information
+- Analyzing field-surveyor activity
+- Examining locations by town, province, and location type
+- Analyzing water-source types and people served
+- Applying ranking functions to water-source analysis
+- Examining survey periods and queue-time data
 
 ### 02 - Water Access Analysis
 
 **File:** `sql/02_water_access_analysis.sql`
 
-Contains SQL queries for:
+This script combines information from multiple tables to analyze water access across different locations.
 
-- Combining water-source, location, visit, and pollution information
+Key areas include:
+- Joining visits, locations, water sources, and water-quality information
 - Creating the `combined_analysis_table` view
-- Province-level water-access analysis
-- Town-level water-access analysis
-- Calculating water-source shares
+- Analyzing water access by province
+- Analyzing water access by town
+- Examining the number of people served by different water sources
+- Calculating water-source shares and aggregated access measures
 
 ### 03 - Queue Analysis
 
 **File:** `sql/03_queue_analysis.sql`
 
-Contains SQL queries for:
+This script focuses on patterns in water collection queue times.
 
-- Average queue time
-- Average queue time by day
-- Average queue time by hour
-- Day and hour queue-time analysis
+Key areas include:
+- Calculating average queue times
+- Comparing queue times across days
+- Analyzing queue times by hour
+- Examining combined day-and-hour patterns
+- Organizing queue-time results for further analysis
 
 ### 04 - Auditor Report Integration
 
 **File:** `sql/04_auditor_report_integration.sql`
 
-Contains SQL queries for:
+This script integrates auditor information with the existing water-services database.
 
-- Exploring database tables
-- Inspecting relationships between relevant tables
-- Integrating auditor information
-- Creating an audit analysis view
-- Province and town-level audit analysis
-- Employee-level audit analysis
+Key areas include:
+- Exploring the auditor report and related tables
+- Connecting audit information with locations, employees, visits, and water sources
+- Creating the `audit_employee_source_view`
+- Comparing audit results across provinces and towns
+- Examining audit results at employee level
+- Identifying lower audit scores for further investigation
 
 ### 05 - Infrastructure Prioritization
 
 **File:** `sql/05_infrastructure_prioritization.sql`
 
-Contains SQL queries for:
+This script organizes potential infrastructure interventions based on the available water-service data.
 
+Key areas include:
 - Creating the `Project_progress` table
-- Assigning potential infrastructure improvements
-- Applying source-specific intervention logic
-- Prioritizing shared-tap improvements using queue time
+- Identifying potential interventions based on water-source conditions
+- Organizing potential actions for river sources
+- Applying queue-time conditions to shared taps
 - Identifying broken in-home taps
-- Applying contamination-based recommendations
-- Performing basic quality checks
+- Identifying wells with contamination concerns
+- Applying conditional logic to organize potential interventions
+- Performing quality checks on the resulting recommendations
+
+The SQL scripts are organized separately so that each stage of the database analysis can be reviewed and understood independently.
 
 ---
 
 ## Tools and Technologies
 
-- **MySQL** - relational database management
-- **SQL** - data exploration, cleaning, analysis, and transformation
-- **Jupyter Notebook** - interactive analysis and documentation
-- **Python** - supporting notebook environment
-- **Git** - version control
-- **GitHub** - project documentation and portfolio presentation
+- **MySQL** — relational database management and SQL analysis
+- **SQL** — data exploration, cleaning, transformation, analysis, and data integration
+- **Jupyter Notebook** — interactive environment for documenting and running the analysis
+- **Python** — supporting the Jupyter Notebook workflow
+- **Git** — version control
+- **GitHub** — project versioning and portfolio presentation
 
 ---
 
 ## Skills Demonstrated
 
 ### SQL and Database Analysis
-
 - Relational database analysis
 - Multi-table joins
-- Data cleaning
-- Aggregation
-- Common Table Expressions
-- Window functions
-- Views
+- Data cleaning and standardization
+- Aggregation and grouping
+- Common Table Expressions (CTEs)
 - Temporary tables
-- Conditional logic
+- SQL views
+- Window functions
+- Ranking with `RANK()`, `DENSE_RANK()`, and `ROW_NUMBER()`
 - Date and time analysis
+- Conditional logic using `CASE`
 
 ### Data Analytics
-
 - Exploratory data analysis
-- Data quality investigation
-- Pattern identification
-- Location-based analysis
-- Time-based analysis
-- Analytical prioritization
-- Translating data into structured recommendations
+- Data quality assessment
+- Identifying patterns across location and time
+- Comparing water access and service conditions
+- Translating analytical findings into structured outputs
+- Organizing data to support decision-making
 
-### Data Integration
-
-- Integrating external audit information
-- Connecting related datasets
-- Creating analytical views
-- Combining operational and audit information
-- Structuring data for decision support
+### Data Integration and Analytical Reasoning
+- Integrating auditor and operational data
+- Connecting information across related tables
+- Designing analytical views
+- Developing condition-based intervention logic
+- Validating analytical results
+- Documenting assumptions and limitations
 
 ---
 
-## How to Reproduce the Analysis
+## How to Reproduce
 
-The notebooks were developed using a local MySQL database containing the Maji Ndogo project data.
+This project was developed using a local MySQL database and Jupyter Notebook.
 
-To reproduce the analysis:
+### Requirements
 
-1. Set up a local MySQL environment.
-2. Load the required Maji Ndogo dataset into MySQL.
-3. Configure the database connection in the notebooks using your own local credentials.
-4. Open the notebooks using Jupyter Notebook or JupyterLab.
-5. Run the notebooks in sequence.
-6. Use the SQL scripts in the `sql` directory as a reference for the main analytical queries.
+- MySQL
+- Python
+- Jupyter Notebook or JupyterLab
+- Required Python packages used by the notebooks
+- The Maji Ndogo water-services dataset
 
-The repository does not contain database credentials or local database files.
+### Setup
+
+1. Clone this repository.
+2. Set up a local MySQL database using the Maji Ndogo dataset.
+3. Update the database connection in the notebook with your own MySQL username, password, host, and database name.
+4. Open the notebooks in Jupyter Notebook or JupyterLab.
+5. Run the notebooks in sequence to follow the analytical workflow.
+6. Review the SQL scripts in the `sql/` directory for the individual database analysis stages.
+
+The repository does not include the local database, raw data files, or database credentials. These files and credentials are excluded through `.gitignore`.
+
+### Suggested Notebook Order
+
+1. `01_water_crisis_analysis.ipynb`
+2. `02_auditor_report_integration.ipynb`
+3. `03_water_future_analysis.ipynb`
+
+The SQL scripts in the `sql/` directory can be reviewed independently according to their descriptions in the SQL Script Breakdown section.
 
 ---
 
 ## Data and Security
 
-Database credentials are not included in this repository.
+The repository is structured to keep local database files, raw data files, environment files, and credentials out of version control.
 
-Local database files, CSV files, Excel files, environment files, and Python cache files are excluded through `.gitignore`.
-
-The database connection shown in the notebooks uses placeholder credentials rather than a real password.
+- Database credentials are not stored in the repository.
+- Notebook database connections use placeholders for local credentials.
+- Local database files and raw CSV/Excel files are excluded through `.gitignore`.
+- Environment and cache files are also excluded from version control.
+- The project can be configured locally using the user's own database credentials and data files.
 
 ---
 
 ## Project Limitations
 
-- The analysis depends on the structure and quality of the provided project dataset.
-- Some calculations depend on assumptions defined during the original analysis.
-- The project is designed as a learning and portfolio project rather than a production data system.
-- Infrastructure recommendations are analytical outputs based on the available data.
-- Any real-world implementation would require additional technical, financial, operational, and field validation.
+- The analysis depends on the quality, completeness, and accuracy of the available dataset.
+- Some analytical conclusions depend on assumptions made from the available data.
+- The project was developed as a learning and portfolio project rather than a production analytics system.
+- Infrastructure priorities are based on the available water-service data and analytical conditions identified in the project.
+- The proposed interventions have not been independently validated through field assessments, engineering studies, financial analysis, or implementation planning.
+- Additional operational, technical, financial, and community-level information would be required before using the findings for real-world implementation.
 
 ---
 
 ## Key Takeaways
 
-This project demonstrates how SQL can be used throughout a practical data analytics workflow, from understanding and cleaning relational data to integrating additional information and organizing analytical findings.
+This project provided practical experience applying SQL across a complete data analytics workflow, from database exploration and cleaning to analysis, data integration, and structured prioritization.
 
-The project brings together:
+Key takeaways include:
 
-- Database exploration
-- Data cleaning
-- Relational joins
-- Aggregation
-- Window functions
-- Time-based analysis
-- Data integration
-- Analytical prioritization
-- Structured decision-support analysis
+- Working with relational data across multiple connected tables
+- Cleaning and standardizing real-world style data
+- Using joins, aggregations, CTEs, views, temporary tables, and window functions
+- Analyzing patterns across locations and time
+- Integrating auditor information with operational data
+- Translating analytical conditions into structured outputs
+- Using data to organize potential areas for further investigation and intervention
+- Documenting assumptions, limitations, and data-quality considerations
 
 ---
 
@@ -371,14 +407,14 @@ The project brings together:
 
 Data Science & Analytics Professional
 
-- GitHub: https://github.com/salimstephen
-- Portfolio: https://salimstephen.vercel.app/
-- LinkedIn: https://linkedin.com/in/otieno-stephen
+- **GitHub:** [salimstephen](https://github.com/salimstephen)
+- **Portfolio:** [salimstephen.vercel.app](https://salimstephen.vercel.app/)
+- **LinkedIn:** [Stephen Otieno](https://linkedin.com/in/otieno-stephen)
 
 ---
 
 ## Project Note
 
-This repository represents a learning and portfolio project based on the Maji Ndogo water services dataset.
+This is a learning and portfolio project based on the Maji Ndogo water services dataset. It demonstrates practical SQL and data analytics skills, including relational data analysis, data cleaning, joins, aggregation, window functions, data integration, and analytical prioritization.
 
-The analysis is intended to demonstrate practical SQL and data analytics skills. The infrastructure recommendations presented in the project are analytical outputs based on the available dataset and should not be interpreted as independently validated engineering, financial, or policy recommendations.
+The infrastructure-related outputs are analytical results based on the available dataset and should not be interpreted as independently validated engineering, financial, or policy recommendations.
